@@ -1,0 +1,192 @@
+External account:
+new.swisscom@yahoo.com/laszlo123
+imap.mail.yahoo.com  993
+smtp.mail.yahoo.com 465
+
+MX LOG:
+/opt/imail1/Mx9.1/log
+
+BT:
+http://saphire.qa.laszlosystems.com:6020/cp/ps/main/richui/main?d=opal.qa.laszlosystems.com#mail
+saphire.qa.laszlosystems.com:6020/cp/index.jsp?d=opal.qa.laszlosystems.com
+1.1.9.0-190.user1-30/p
+
+
+http://rwc-hinoki06.owmessaging.com:8080/kiwi/index-rui.jsp
+michael kael mhwang
+@rwc-ux02.owmessaging.com
+
+webtop -call->mos, webtop-cover->mos(mos 没有被webtop覆盖到的APIs)
+
+http://rwc-hinoki03:8080/kiwi-octane/index-rui.jsp 
+-------------> QA env cindy/p 或者yuly15-20/p   ,test1@openwave.com/test
+LOG:
+imail/imail123
+Webtop log路径： /home/imail/tomcat/webapps/kiwi-octane/WEB-INF/logs
+/home/imail/tomcat/webapps/kiwi-octane/WEB-INF/logs
+
+Webtop Config:
+/home/imail/webtop/webapps/kiwi-octane/WEB-INF/classes/config
+http://10.13.6.63:8080/kiwi-octane/index-rui.jsp
+
+
+http://rwc-hinoki03:8080/kiwi-octane/index-rui.jsp 
+yuly15-20/p 
+
+vivian.auto1~4@rwc-hinoki05.owmessaging.com
+kate.auto1~4@rwc-hinoki05.owmessaging.com
+url is http://rwc-hinoki06.owmessaging.com:8080/kiwi-octane-rel/index-rui.jsp
+
+
+ruby host account:
+cp
+Cpp@ss
+
+QE E2E
+http://172.20.0.78:8080/kiwi-octane/index-rui.jsp
+root/letmein
+
+SSO
+http://172.20.0.12:8080/webmail/sso-token.jsp 
+http://172.20.0.78:8080/otosan/sso-token.jsp
+
+
+/opt/imail1/webtop/bin
+
+[7/7/2014 5:35:27 PM] vivi zhang:  http://10.13.6.55:6030/cp/index-touch.jsp
+[7/7/2014 5:35:49 PM] vivi zhang: swc218_5@testb.dom/p
+
+
+SBM: http://rwc-hinoki06.owmessaging.com:8080/otosan-rel/index-rui.jsp
+${HostPort}       http://rwc-hinoki06.owmessaging.com:8080
+${common_domain}    @rwc-hinoki05.owmessaging.com
+root: imail/imail123
+
+
+
+GMAIL:
+https://www.google.com/calendar/ical/etjejcqrmtmvfg5n4p28u8q6gk%40group.calendar.google.com/public/basic.ics
+YAHOO
+https://calendar.yahoo.com/new.swisscom/ca2a261e91916ed0a6a2e2f7e57e88db/ycal.ics?id=288
+
+--------------------------tcpdump-----------------------------------------------------------
+wireshark
+http://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html
+\tcpdump  -XvvennSs 0 -i eth0 tcp[20:2]=0x4745 or tcp[20:2]=0x4854 -w ./target.cap
+tcpdump host 210.228.189.195
+
+tcpdump
+tcpdump host 210.228.189.195 -w ./target.cap
+
+------------------------MOS--------------------------------------------------------------
+MOS API:
+maxReceiveMessageSizeKB =Maximum receive message size 100
+maxMessages = Max messages that can exist in mailbox 1000
+maxStorageSizeKB = Mail quota 10000
+
+MOS back-end config:
+fepmsshost:imail1:Mx9.1:~$ imdbcontrol sac cindy3 openwave.com mailquotamaxmsgs 30000
+fepmsshost:imail1:Mx9.1:~$ imdbcontrol gac cindy3 openwave.com
+-> attachment quota -> Set following to 0
+mailquotamaxmsgs 最多多少封信
+mailquotatotkb  最多存多少
+mailquotamaxmsgkb 一封信最大是多少
+
+/var/mxos2/logs/mxos.log
+Check mail alias failed reason:
+[3:17:05 PM] James Song: post http://172.20.0.79:8081/mxos/mailbox/v2/webtop6@openwave.com/base/
+[3:17:12 PM] James Song: maxNumAliases=10
+
+curl -v -X POST http://172.20.0.79:8081/mxos/mailbox/v2/webtop10@openwave.com/mailReceipt -d "maxReceiveMessageSizeKB=50000"
+curl -v -X GET http://172.20.0.79:8081/mxos/mailbox/v2/webtop10@openwave.com
+
+
+add alias for provision SBM new account:
+imail1$	--->  imdbcontrol cl webtopqa4 webtopqa4/TYPE=PLMN openwave.com
+for i in {5..10}
+> do
+> imdbcontrol cl webtopqa$i webtopqa$i/TYPE=PLMN openwave.com
+> done
+
+20000 mails
+su - imail1
+/opt/imail1/michael
+nohup sm.pl -u webtop14 -p p -f INBOX -c 3999 msg.txt &
+---------------------------------BACK END-----------------------------------------------------
+-----------------------------------------看MX backend
+ ssh->78
+imconfcontrol -ports
+telnet  172.20.1.175 143
+aa login vivian2@test3.com p
+------------------------------------------------------------
+imconfcontrol -ports | grep imap
+ telnet 0 10143
+k login webtop14 p       
+k list "" *
+k select many
+[1:55:28 PM] fionazhang: k logout
+
+./sm.pl -u webtop14@openwave.com -c 3000 msg1
+./sm.pl -u o2@openwave.com -folder p1 -c 20 msg
+
+-------------------------------------------------------------看CPMS backend
+在kpn上建domain和账号，用FS server
+Stevens-rMacBook-Pro:~ stevenbai$ ssh root@172.20.1.175
+root@172.20.1.175's password: 
+Last login: Sun Nov 23 22:00:08 2014 from 10.13.2.103
+[root@rwc-fusion-be01 ~]# cd /opt/builds/
+[root@rwc-fusion-be01 builds]# ll
+total 23192
+drwxr-xr-x.  8 cpowqa cpowqa     4096 Aug 29 01:57 bohem
+drwxr-xr-x.  5 cpowqa cpowqa     4096 Nov  4 06:23 CPDS
+-rwxr-xr-x.  1 root   root       1897 Nov 24 00:32 lynn.sh
+-rw-r--r--.  1 cpowqa cpowqa 21745885 Nov  4 07:00 MAIA-9.9.999.962-linux.tar.gz
+drwxrwxrwx.  7 cpowqa cpowqa     4096 Nov 19 04:34 messaging_component
+-rwxr-xr-x.  1 cpowqa cpowqa  1933473 Sep  3 22:56 mgr
+drwxr-xr-x. 10 cpowqa cpowqa     4096 Sep 11 22:47 minotaur
+drwxr-xr-x. 11 cpowqa cpowqa     4096 Aug 25 04:47 minotaurbackup
+-rwxr-xr-x.  1 cpowqa cpowqa     1580 Nov  7 01:54 provision175noNS.sh
+-rwxr-xr-x.  1 cpowqa cpowqa     1599 Sep  3 22:55 provision175.sh
+-rwxr-xr-x.  1 cpowqa cpowqa     1599 Sep  3 23:00 provision177.sh
+-rw-r--r--.  1 root   root        972 Nov 13 19:54 provision.log
+drwxr-xr-x.  4 cpowqa cpowqa     4096 Sep  2 22:45 scripts
+-rwxrwxrwx.  1 cpowqa cpowqa     1174 Nov  6 05:21 startallserver.sh
+-rwxr-xr-x.  1 root   root       1251 Nov 20 22:00 startCPDS-FS-CAL-PAB-MS-175.sh
+drwxrwxrwx.  3 cpowqa cpowqa     4096 Oct 27 02:24 usermove
+drwxr-xr-x.  2 cpowqa cpowqa     4096 Sep  2 01:45 yumrpm
+[root@rwc-fusion-be01 builds]# ./provision175noNS.sh 
+Error while creating domain! Please refer /opt/builds/provision.log for reason.
+[root@rwc-fusion-be01 builds]# ./provision175noNS.sh test.com steven 5
+
+ [root@rwc-fusion-fe01 ~]# telnet 172.20.1.175 4201 （管理端口）
+Trying 172.20.1.175...
+Connected to 172.20.1.175.
+Escape character is '^]'.
+<A3616CB57934C8056ED5B24AF5FACDDF51DA2CB2@rwc-fusion-be01.owmessaging.com>
+login p write
+OK
+user status u12@test2.com
+* USER u12@test2.com
+* MAILBOX '/opt/cpowqa/cp/remote/172_20_1_175/ms-HEAD/install/storage/test2.com/u12'
+* DISKUSAGE 356
+* MESSAGES 7
+* PHXPASS '4BB7DE689D7FD16D'
+* AUTOREPLY '/opt/cpowqa/cp/remote/172_20_1_175/ms-HEAD/install/storage/test2.com/u12/autorply.txt'
+* AUTOREPLYALT '/opt/cpowqa/cp/remote/172_20_1_175/ms-HEAD/install/storage/test2.com/u12/autorply_alt.txt'
+* RETURN-CONTENTS 8
+* REPLY-OPTIONS 8
+* REPLY-INTERVAL 5
+* STARTREPLYING 201412042208
+* STOPREPLYING 201412191900
+* DEFAULT-OPTIONS 23
+* DEFAULT-LANGUAGE 'en-us'
+* DEFAULT-MAXMSGSIZE 26214400
+OK
+ telnet 172.20.1.175 4201
+
+------------------ENABLE FEATURE:
+telnet ip 5230
+[11:19:44 AM] Michael He: login p write
+[11:19:53 AM] Michael He: get TRASH
+[11:20:05 AM] Michael He: get  TRASH 
+[11:20:31 AM] Michael He: set  。。。1
