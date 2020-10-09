@@ -1,0 +1,16 @@
+export NO_PROXY=localhost,127.0.0.0/8,::1
+export http_proxy=http://file.rdu.redhat.com:3128/
+export FTP_PROXY=http://file.rdu.redhat.com:3128/
+export ftp_proxy=http://file.rdu.redhat.com:3128/
+export ALL_PROXY=socks://file.rdu.redhat.com:3128/
+export all_proxy=socks://file.rdu.redhat.com:3128/
+export HTTPS_PROXY=http://file.rdu.redhat.com:3128/
+export https_proxy=http://file.rdu.redhat.com:3128/
+export no_proxy=localhost,127.0.0.0/8,::1
+
+
+
+Burp Suite======================================
+java -jar burpsuite_free_v1.6.32.jar
+export https_proxy=http://127.0.0.1:8080 
+
