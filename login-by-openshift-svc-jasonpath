@@ -1,0 +1,4 @@
+curl https://raw.githubusercontent.com/eparis/ssh-bastion/master/deploy/deploy.sh | bash
+
+oc get service -n openshift-ssh-bastion ssh-bastion -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+或者最后是.ip
