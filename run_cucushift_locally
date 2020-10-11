@@ -1,0 +1,47 @@
+    RESULT_FILE=/tmp/executed_cases.txt
+
+    if [ "$1" == "-h" ] ; then
+      echo "Usage:"
+      echo "In first terminal:"
+      echo "  $ cd /path/to/cucushift"
+      echo "  $ /path/to/$0 caseid1 caseid2 ... > cucumber.log"
+      echo "In second terminal, check cucumber log:"
+      echo "  $ tail -f cucumber.log"
+      echo "In third terminal, check progress:"
+      echo "  $ tail -f $RESULT_FILE"
+      exit 0
+    fi
+
+    MSG="==== Begin testing `date` ===="
+    echo "$MSG"
+    echo >> $RESULT_FILE
+    echo "$MSG" >> $RESULT_FILE
+    unset DISPLAY
+
+    RESULTS=""
+    for id in "$@" ; do
+      script=$(grep -n -r "$id" features/tierN/ | cut -d':' -f1,2)
+      echo "BeginTesting TC: $id $script"
+      if [ -n "$script" ] ; then
+        echo $script
+        cucumber -P $script ### > $id.log
+        if [ "$?" == "0" ] ; then
+          MSG="$id $script - PASS"
+          echo "EndTesting TC: $MSG"
+          echo "$MSG" >> $RESULT_FILE
+          RESULTS+="$MSG
+    "
+        else
+          MSG="$id $script - FAIL"
+          echo "End testing TC: $MSG"
+          echo "$MSG" >> $RESULT_FILE
+          RESULTS+="$MSG
+    "
+        fi
+      fi
+    done
+
+    echo "==== Summary Results ===="
+    echo "$RESULTS"
+    echo "==== Done Testing ====" >> $RESULT_FILE
+    echo "==== Done Testing ===="
